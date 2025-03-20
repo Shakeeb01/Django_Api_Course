@@ -43,8 +43,9 @@ def order_list(request):
 def product_info(request):
     products = Product.objects.all()
     serializer = ProductInfoSerializer({
+        # these key names should be same as to the serializer fields.
         'products':products,
-        'count' : len(products),
+        'count' : len(products),# Counting all the products
         'max_price' : products.aggregate(max_price = Max('price'))['max_price']
     })
     return Response(serializer.data)

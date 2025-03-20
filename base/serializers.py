@@ -59,8 +59,10 @@ class OrderSerializer(serializers.ModelSerializer):
         
         
 # Product Info Serializer
+# This serializer does not depend on any model of our db.
 class ProductInfoSerializer(serializers.Serializer):
     # Getting all the products,count of products,max price
+    # here we will specify fields that we want in our api data
     products = ProductSerializer(many=True)
     count = serializers.IntegerField()
     max_price = serializers.FloatField()
